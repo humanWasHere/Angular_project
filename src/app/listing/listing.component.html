@@ -1,10 +1,38 @@
 <div>
   <h2>Page de listing</h2>
-  <div>
-    <p><strong>ID:</strong> {{ produit.Id }}</p>
-    <p><strong>Nom:</strong> {{ produit.Nom }}</p>
-    <p><strong>Textures:</strong> {{ produit.Texture }}</p>
-    <p><strong>Grammage:</strong> {{ produit.Grammage }}</p>
-    <p><strong>Couleur:</strong> {{ produit.Couleur }}</p>
-  </div>
+
+  <form [formGroup]="formulaireProduit" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="nom">Nom du produit</label>
+      <input id="nom" formControlName="nom">
+      <!-- <div style="color:red" *ngIf="shouldShowError('Nom')">Le Nom est requis</div> -->
+    </div>
+    <div>
+      <label for="texture">Texture du produit</label>
+      <input id="texture" formControlName="texture">
+    </div>
+    <div>
+      <label for="grammage">Grammage du produit</label>
+      <input id="grammage" formControlName="grammage">
+      <!-- <div style="color:red" *ngIf="shouldShowError('grammage')">Le grammage doit être un nombre</div> -->
+    </div>
+    <div>
+      <label for="couleur">Couleur du produit</label>
+      <input id="couelur" formControlName="couleur">
+    </div>
+    <button type="submit" [disabled]="!formulaireProduit.valid">Sauvegarder</button>
+  </form>
+
+  <ul>
+    <li *ngFor="let produit of getListeProduits()">
+          <p><strong>ID:</strong> {{ produit.Id }}</p>
+          <p><strong>Nom:</strong> {{ produit.Nom }}</p>
+          <p><strong>Textures:</strong> {{ produit.Texture }}</p>
+          <p><strong>Grammage:</strong> {{ produit.Grammage }}</p>
+          <p><strong>Couleur:</strong> {{ produit.Couleur }}</p>
+    </li>
+    <p *ngIf="getListeProduits().length == 0">
+      Il n'y a aucun produits à afficher.
+    </p>
+  </ul>
 </div>
