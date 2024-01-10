@@ -1,0 +1,21 @@
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border: solid 1px black;
+  border-radius: 3px;
+}
+
+nav {
+  padding: 5px;
+}
