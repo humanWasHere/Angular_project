@@ -1,1 +1,34 @@
-<p>detail-produit works!</p>
+<h2>Page de détail du produit {{produit.Id}}</h2>
+<br><br><br>
+<div id="main-div">
+  <div *ngFor="let p of getProduits()">
+    <p><strong>ID:</strong> {{ this.p.Id }}</p>
+    <p><strong>Nom:</strong> {{ this.p.Nom }}</p>
+    <p><strong>Textures:</strong> {{ this.p.Texture }}</p>
+    <p><strong>Grammage:</strong> {{ this.p.Grammage }}</p>
+    <p><strong>Couleur:</strong> {{ this.p.Couleur }}</p>
+    <button (click)="displayForm()">Créer</button>
+  </div>
+
+  <div *ngIf="sectionVisible">
+    <form [formGroup]="formulaireProduit" (ngSubmit)="modifyOnSubmit()">
+      <div>
+        <label for="nom">Nom du produit</label>
+        <input id="nom" formControlName="nom">
+      </div>
+      <div>
+        <label for="texture">Texture du produit</label>
+        <input id="texture" formControlName="texture">
+      </div>
+      <div>
+        <label for="grammage">Grammage du produit</label>
+        <input id="grammage" formControlName="grammage">
+      </div>
+      <div>
+        <label for="couleur">Couleur du produit</label>
+        <input id="couelur" formControlName="couleur">
+      </div>
+      <button type="submit" [disabled]="!formulaireProduit.valid">Modifier</button>
+    </form>
+  </div>
+</div>

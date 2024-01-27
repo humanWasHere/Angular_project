@@ -25,11 +25,13 @@
 
   <ul>
     <li *ngFor="let produit of getListeProduits()">
-          <p><strong>ID:</strong> {{ produit.Id }}</p>
-          <p><strong>Nom:</strong> {{ produit.Nom }}</p>
-          <p><strong>Textures:</strong> {{ produit.Texture }}</p>
-          <p><strong>Grammage:</strong> {{ produit.Grammage }}</p>
-          <p><strong>Couleur:</strong> {{ produit.Couleur }}</p>
+      <button (click)="goToPage('../detail-produit/' + produit.Id)">
+        <p><strong>ID:</strong> {{ produit.Id }}</p>
+        <p><strong>Nom:</strong> {{ produit.Nom }}</p>
+        <p><strong>Textures:</strong> {{ produit.Texture }}</p>
+        <p><strong>Grammage:</strong> {{ produit.Grammage }}</p>
+        <p><strong>Couleur:</strong> {{ produit.Couleur }}</p>
+      </button>
     </li>
     <p *ngIf="getListeProduits().length == 0">
       Il n'y a aucun produits à afficher.
