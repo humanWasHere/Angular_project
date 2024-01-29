@@ -1,6 +1,7 @@
 <div>
   <h2>Page de listing</h2>
-
+  <p>Créez un produit pour le voir affiché !</p>
+  <!-- formulaire de création de produit -->
   <form [formGroup]="formulaireProduit" (ngSubmit)="onSubmit()">
     <div>
       <label for="nom">Nom du produit</label>
@@ -23,6 +24,7 @@
     <button type="submit" [disabled]="!formulaireProduit.valid">Sauvegarder</button>
   </form>
 
+  <!-- affichage de la liste des produits -->
   <ul>
     <li *ngFor="let produit of getListeProduits()">
       <button (click)="goToPage('../detail-produit/' + produit.Id)">
@@ -33,6 +35,7 @@
         <p><strong>Couleur:</strong> {{ produit.Couleur }}</p>
       </button>
     </li>
+    <!-- affiche un message si il n'y a aucun produit -->
     <p *ngIf="getListeProduits().length == 0">
       Il n'y a aucun produits à afficher.
     </p>

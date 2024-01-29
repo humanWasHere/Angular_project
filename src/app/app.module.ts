@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ListingComponent } from './listing/listing.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DetailProduitComponent } from './detail-produit/detail-produit.component'; //à virer
+import { DetailProduitComponent } from './detail-produit/detail-produit.component';
 
 @NgModule({
   declarations: [

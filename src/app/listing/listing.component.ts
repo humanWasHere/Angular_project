@@ -34,10 +34,12 @@ export class ListingComponent {
     this._produitService.ajoutProduit(this.produit);
   }
 
+  // retourne la liste des produits par injection de dépendance de produitServices
   public getListeProduits() {
     return this._produitService.getProduits();
   }
 
+  // fonction de redirection de type routing prenant le nom de la page en entrée
   public goToPage(pageName:string){
     this.router.navigate([`${pageName}`]);
   }

@@ -2,6 +2,7 @@ import { Produit } from './../model-produit/produit.model';
 import { Component } from '@angular/core';
 import { ServiceProduitService } from './../service-produit/service-produit.service';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detail-produit',
@@ -11,7 +12,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 export class DetailProduitComponent {
 
   // set les services de la classe Produit()
-  public constructor(private _produitService: ServiceProduitService){ }
+  public constructor(private _route: ActivatedRoute, private _produitService: ServiceProduitService){ }
   public produit = new Produit();
 
   // set la valeur conditionnelle d'affichage
@@ -27,13 +28,12 @@ export class DetailProduitComponent {
 
   // update un produit specific après modification
   public modifyOnSubmit() {
-    this.produit = new Produit();
-    this.produit.Id = this.produit.Id;
+    // this.produit.Id = this.findSpecificProduit();
     this.produit.Nom = this.formulaireProduit.value.nom!;
     this.produit.Texture = this.formulaireProduit.value.texture!;
     this.produit.Grammage = this.formulaireProduit.value.grammage!;
     this.produit.Couleur = this.formulaireProduit.value.couleur!;
-    this._produitService.ajoutProduit(this.produit);
+    this._produitService.updateProduit(this.produit);
   }
 
   // récupère les produits du service
@@ -46,4 +46,15 @@ export class DetailProduitComponent {
     this.sectionVisible = true;
   }
 
+  // récupère l'id de la page detail-produit dans l'url on init
+  ngOnInit() {
+    const id = this._route.snapshot.paramMap.get('id');
+    return id
+  }
+
+  // retourne un object produit qui correspond à l'id recherché dans la liste des produits
+  public findSpecificProduit() : Produit | undefined{
+    const id = +this._route.snapshot.paramMap.get('id')!; // Retrieve ID from route parameter and convert to number
+    return this.getProduits().find(p => p.Id === id);
+  }
 }
