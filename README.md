@@ -1,27 +1,49 @@
-# FabriquePapier
+# TP AngularJS (EPSI - B3)
+## TP AngularJS de listing de produit de papetrie
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
+### Sommaire
+1. [Explications](#Explications)
+2. [Travail à faire](#Travail-à-faire)
+3. [Structure du projet](#Structure-du-projet)  
+4. [Développeurs](#Développeurs)  
 
-## Development server
+### Explications
+Explication 👍
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Travail à faire
+```
+1. Créer une page qui s’occupera uniquement du listing
+  a. Cette page affiche uniquement la liste des produits
+  b. Au clic sur un produit, on doit être redirigé sur une page affichant uniquement le 
+détail d’un produit 
+  c. Elle contiendra un bouton (ou un lien) « créer » qui affiche le formulaire de 
+modification vierge
+2. Créer une page qui affichera le détail d’un produit (et qui permettra de sauvegarder les 
+modifications)
+  a. Cette page permettra de modifier un produit
+  b. Elle permettra également de créer un nouveau produit (en passant 0 comme 
+identifiant via l’url par exemple)
+3. Mettre en place le routing
+  a. Créer un menu qui permet d’accéder aux pages suivantes : 
+    i. Affichage de la liste des produits, avec le détail en dessous (page faite dans la 
+première partie du projet)
+    ii. Affichage du listing des produits (nouvelle page créée dans cette seconde 
+partie du projet)
+  b. Créer dynamiquement le menu, sans passer par l’html
+i. Idéalement, retirer le /produit/:id
+4. Service : faire passer l’ensemble des ajouts / modifications par le service
+  a. => Il faut créer une méthode update qui prend en paramètre un produit qui fera 
+l’ajout ou la mise à jour
+5. Mettre en place l’asynchrone : la liste des produits sera fournie de manière asynchrone, de la 
+même manière que les informations d’un produit.
+```
 
-## Code scaffolding
+### Structure du projet
+```
+tree
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Développeurs
+Romain C  
+Théo C  
+Alexis L
