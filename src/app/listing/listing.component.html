@@ -112,11 +112,11 @@
     <ul>
       <li *ngFor="let produit of getListeProduits()">
         <button (click)="goToPage('../detail-produit/' + produit.Id)">
-          <p><strong>ID:</strong> {{ produit.Id }}</p>
-          <p><strong>Nom:</strong> {{ produit.Nom }}</p>
-          <p><strong>Textures:</strong> {{ produit.Texture }}</p>
-          <p><strong>Grammage:</strong> {{ produit.Grammage }}</p>
-          <p><strong>Couleur:</strong> {{ produit.Couleur }}</p>
+          <p style="color:#333;"><strong>ID:</strong> {{ produit.Id }}</p>
+          <p style="color:#333;"><strong>Nom:</strong> {{ produit.Nom }}</p>
+          <p style="color:#333;"><strong>Textures:</strong> {{ produit.Texture }}</p>
+          <p style="color:#333;"><strong>Grammage:</strong> {{ produit.Grammage }}</p>
+          <p style="color:#333;"><strong>Couleur:</strong> {{ produit.Couleur }}</p>
         </button>
       </li>
       <!-- affiche un message si il n'y a aucun produit -->
