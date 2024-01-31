@@ -28,12 +28,18 @@ export class DetailProduitComponent {
 
   // update un produit specific après modification
   public modifyOnSubmit() {
-    // this.produit.Id = this.findSpecificProduit();
-    this.produit.Nom = this.formulaireProduit.value.nom!;
-    this.produit.Texture = this.formulaireProduit.value.texture!;
-    this.produit.Grammage = this.formulaireProduit.value.grammage!;
-    this.produit.Couleur = this.formulaireProduit.value.couleur!;
-    this._produitService.updateProduit(this.produit);
+    const specificProduit = this.findSpecificProduit();
+    if (specificProduit) {
+        this.produit.Id = specificProduit.Id; // Assertion de non-nullité car specificProduit est garanti d'être défini
+        this.produit.Nom = this.formulaireProduit.value.nom!;
+        this.produit.Texture = this.formulaireProduit.value.texture!;
+        this.produit.Grammage = this.formulaireProduit.value.grammage!;
+        this.produit.Couleur = this.formulaireProduit.value.couleur!;
+        this._produitService.updateProduit(this.produit);
+    }
+    else {
+        console.log("Le produit spécifié n'existe pas.");
+    }
   }
 
   // récupère les produits du service

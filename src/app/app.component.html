@@ -1,7 +1,39 @@
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #fff;
+    margin: 0 15px;
+    font-size: 16px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: navy;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  nav a:hover {
+    background-color: darkred;
+    color: white;
+  }
+</style>
+
 <nav>
-  <li><a routerLink="">Accueil</a></li>
-  <li><a routerLink="/listing">Page de listing</a></li>
+  <a routerLink="">Accueil</a>
+  <a routerLink="/listing">Page de listing</a>
 </nav>
+
+
 <hr>
 <!-- affiche la section de manière dynamique -->
 <router-outlet></router-outlet>
