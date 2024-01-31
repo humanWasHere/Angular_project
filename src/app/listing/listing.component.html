@@ -1,43 +1,130 @@
-<div>
-  <h2>Page de listing</h2>
-  <p>Créez un produit pour le voir affiché !</p>
-  <!-- formulaire de création de produit -->
-  <form [formGroup]="formulaireProduit" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="nom">Nom du produit</label>
-      <input id="nom" formControlName="nom">
-      <!-- <div style="color:red" *ngIf="shouldShowError('Nom')">Le Nom est requis</div> -->
-    </div>
-    <div>
-      <label for="texture">Texture du produit</label>
-      <input id="texture" formControlName="texture">
-    </div>
-    <div>
-      <label for="grammage">Grammage du produit</label>
-      <input id="grammage" formControlName="grammage">
-      <!-- <div style="color:red" *ngIf="shouldShowError('grammage')">Le grammage doit être un nombre</div> -->
-    </div>
-    <div>
-      <label for="couleur">Couleur du produit</label>
-      <input id="couelur" formControlName="couleur">
-    </div>
-    <button type="submit" [disabled]="!formulaireProduit.valid">Sauvegarder</button>
-  </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page de listing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
 
-  <!-- affichage de la liste des produits -->
-  <ul>
-    <li *ngFor="let produit of getListeProduits()">
-      <button (click)="goToPage('../detail-produit/' + produit.Id)">
-        <p><strong>ID:</strong> {{ produit.Id }}</p>
-        <p><strong>Nom:</strong> {{ produit.Nom }}</p>
-        <p><strong>Textures:</strong> {{ produit.Texture }}</p>
-        <p><strong>Grammage:</strong> {{ produit.Grammage }}</p>
-        <p><strong>Couleur:</strong> {{ produit.Couleur }}</p>
-      </button>
-    </li>
-    <!-- affiche un message si il n'y a aucun produit -->
-    <p *ngIf="getListeProduits().length == 0">
-      Il n'y a aucun produits à afficher.
-    </p>
-  </ul>
-</div>
+    div {
+      margin: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    h2 {
+      color: #3498db;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    li {
+      margin-bottom: 15px;
+    }
+
+    li button {
+      width: 100%;
+      text-align: left;
+      padding: 10px;
+      background-color: #ecf0f1;
+      border: 1px solid #bdc3c7;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    p.error-message {
+      color: red;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <h2>Page de listing</h2>
+    <p>Créez un produit pour le voir affiché !</p>
+
+    <form [formGroup]="formulaireProduit" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="nom">Nom du produit</label>
+        <input id="nom" formControlName="nom" required>
+        <!-- <p class="error-message" *ngIf="shouldShowError('Nom')">Le Nom est requis</p> -->
+      </div>
+      <div>
+        <label for="texture">Texture du produit</label>
+        <input id="texture" formControlName="texture">
+      </div>
+      <div>
+        <label for="grammage">Grammage du produit</label>
+        <input id="grammage" formControlName="grammage" type="number">
+        <!-- <p class="error-message" *ngIf="shouldShowError('grammage')">Le grammage doit être un nombre</p> -->
+      </div>
+      <div>
+        <label for="couleur">Couleur du produit</label>
+        <input id="couleur" formControlName="couleur">
+      </div>
+      <button type="submit" [disabled]="!formulaireProduit.valid">Sauvegarder</button>
+    </form>
+
+    <ul>
+      <li *ngFor="let produit of getListeProduits()">
+        <button (click)="goToPage('../detail-produit/' + produit.Id)">
+          <p><strong>ID:</strong> {{ produit.Id }}</p>
+          <p><strong>Nom:</strong> {{ produit.Nom }}</p>
+          <p><strong>Textures:</strong> {{ produit.Texture }}</p>
+          <p><strong>Grammage:</strong> {{ produit.Grammage }}</p>
+          <p><strong>Couleur:</strong> {{ produit.Couleur }}</p>
+        </button>
+      </li>
+      <!-- affiche un message si il n'y a aucun produit -->
+      <p *ngIf="getListeProduits().length == 0">
+        Il n'y a aucun produit à afficher.
+      </p>
+    </ul>
+  </div>
+
+</body>
+</html>
