@@ -9,15 +9,22 @@
     background-color: #333;
     padding: 10px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  nav img {
+    max-height: 40px; /* Adjust the height as needed */
+    margin-right: 10px;
   }
 
   nav a {
     text-decoration: none;
     color: #fff;
-    margin: 0 15px;
     font-size: 16px;
     display: inline-block;
-    padding: 10px 20px;
+    padding: 10px 15px; /* Adjust the padding as needed */
     background-color: navy;
     transition: background-color 0.3s, color 0.3s;
   }
@@ -29,9 +36,12 @@
 </style>
 
 <nav>
+  <img src="../../sheet.png" alt="Logo">
   <a routerLink="">Accueil</a>
   <a routerLink="/listing">Page de listing</a>
 </nav>
+
+
 
 
 <hr>
