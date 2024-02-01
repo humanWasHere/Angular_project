@@ -17,6 +17,7 @@ export class DetailProduitComponent {
 
   // set la valeur conditionnelle d'affichage
   sectionVisible: boolean = false;
+  modificationValidee: boolean = false;
 
   // défini les conditions de formulaire
   public formulaireProduit = new FormGroup({
@@ -33,9 +34,10 @@ export class DetailProduitComponent {
         this.produit.Id = specificProduit.Id; // Assertion de non-nullité car specificProduit est garanti d'être défini
         this.produit.Nom = this.formulaireProduit.value.nom!;
         this.produit.Texture = this.formulaireProduit.value.texture!;
-        this.produit.Grammage = this.formulaireProduit.value.grammage!;
+        this.produit.Grammage = parseInt(this.formulaireProduit.value.grammage!);
         this.produit.Couleur = this.formulaireProduit.value.couleur!;
         this._produitService.updateProduit(this.produit);
+        this.modificationValidee = true;
     }
     else {
         console.log("Le produit spécifié n'existe pas.");

@@ -85,13 +85,10 @@
 
   <div>
     <h2>Page de listing</h2>
-    <p>Créez un produit pour le voir affiché !</p>
-
     <form [formGroup]="formulaireProduit" (ngSubmit)="onSubmit()">
       <div>
         <label for="nom">Nom du produit</label>
         <input id="nom" formControlName="nom" required>
-        <!-- <p class="error-message" *ngIf="shouldShowError('Nom')">Le Nom est requis</p> -->
       </div>
       <div>
         <label for="texture">Texture du produit</label>
@@ -100,7 +97,6 @@
       <div>
         <label for="grammage">Grammage du produit</label>
         <input id="grammage" formControlName="grammage" type="number">
-        <!-- <p class="error-message" *ngIf="shouldShowError('grammage')">Le grammage doit être un nombre</p> -->
       </div>
       <div>
         <label for="couleur">Couleur du produit</label>
@@ -122,6 +118,8 @@
       <!-- affiche un message si il n'y a aucun produit -->
       <p *ngIf="getListeProduits().length == 0">
         Il n'y a aucun produit à afficher.
+        <br>
+        Créez un produit pour le voir affiché !
       </p>
     </ul>
   </div>

@@ -29,7 +29,7 @@ export class ListingComponent {
     this.produit.Id = this._produitService.getProduits().length + 1;
     this.produit.Nom = this.formulaireProduit.value.nom!;
     this.produit.Texture = this.formulaireProduit.value.texture!;
-    this.produit.Grammage = this.formulaireProduit.value.grammage!;
+    this.produit.Grammage = parseInt(this.formulaireProduit.value.grammage!);
     this.produit.Couleur = this.formulaireProduit.value.couleur!;
     this._produitService.ajoutProduit(this.produit);
   }
