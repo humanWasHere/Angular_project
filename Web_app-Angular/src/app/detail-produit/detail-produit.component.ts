@@ -1,5 +1,5 @@
 import { Produit } from './../model-produit/produit.model';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ServiceProduitService } from './../service-produit/service-produit.service';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute } from '@angular/router';
@@ -9,12 +9,26 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './detail-produit.component.html',
   styleUrls: ['./detail-produit.component.scss']
 })
-export class DetailProduitComponent {
+export class DetailProduitComponent implements OnInit{
 
   // set les services de la classe Produit()
   public constructor(private _route: ActivatedRoute, private _produitService: ServiceProduitService){ }
-  public produit = new Produit();
 
+  ngOnInit() { // Je n'ai pas réussi à utiliser params.get differement
+    this._route.paramMap.subscribe(params => {
+      const idString = params.get('id');
+      const id = idString ? parseInt(idString, 10) : null;
+
+      if (id !== null && !isNaN(id)) {
+        // Use the 'id' to retrieve specific product details
+        this.updateProduit(id);
+      } else {
+        console.log('Invalid or missing id parameter.');
+      }
+    });
+  }
+
+  public produit = new Produit();
   // set la valeur conditionnelle d'affichage
   sectionVisible: boolean = false;
   modificationValidee: boolean = false;
@@ -31,16 +45,15 @@ export class DetailProduitComponent {
   public modifyOnSubmit() {
     const specificProduit = this.findSpecificProduit();
     if (specificProduit) {
-        this.produit.Id = specificProduit.Id; // Assertion de non-nullité car specificProduit est garanti d'être défini
-        this.produit.Nom = this.formulaireProduit.value.nom!;
-        this.produit.Texture = this.formulaireProduit.value.texture!;
-        this.produit.Grammage = parseInt(this.formulaireProduit.value.grammage!);
-        this.produit.Couleur = this.formulaireProduit.value.couleur!;
-        this._produitService.updateProduit(this.produit);
-        this.modificationValidee = true;
-    }
-    else {
-        console.log("Le produit spécifié n'existe pas.");
+      this.produit.Id = specificProduit.Id;
+      this.produit.Nom = this.formulaireProduit.value.nom!;
+      this.produit.Texture = this.formulaireProduit.value.texture!;
+      this.produit.Grammage = parseInt(this.formulaireProduit.value.grammage!);
+      this.produit.Couleur = this.formulaireProduit.value.couleur!;
+      this._produitService.updateProduit(this.produit);
+      this.modificationValidee = true;
+    } else {
+      console.log("Le produit spécifié n'existe pas.");
     }
   }
 
@@ -50,19 +63,24 @@ export class DetailProduitComponent {
   }
 
   // décide si le fomulaire de modification doit être visible ou non
-  public displayForm(){
+  public displayForm() {
     this.sectionVisible = true;
   }
 
-  // récupère l'id de la page detail-produit dans l'url on init
-  ngOnInit() {
-    const id = this._route.snapshot.paramMap.get('id');
-    return id
+  // retourne un object produit qui correspond à l'id recherché dans la liste des produits
+  public findSpecificProduit(): Produit | undefined {
+    const id = +this._route.snapshot.paramMap.get('id')!;
+    return this.produit; // Directly returning the property since it's now updated asynchronously
   }
 
-  // retourne un object produit qui correspond à l'id recherché dans la liste des produits
-  public findSpecificProduit() : Produit | undefined{
-    const id = +this._route.snapshot.paramMap.get('id')!; // Retrieve ID from route parameter and convert to number
-    return this.getProduits().find(p => p.Id === id);
+  private updateProduit(id: number): void {
+    this._produitService.getProduits().subscribe((produits) => {
+      const specificProduit = produits.find(p => p.Id === id);
+      if (specificProduit) {
+        this.produit = specificProduit;
+      } else {
+        console.log("Le produit spécifié n'existe pas.");
+      }
+    });
   }
 }

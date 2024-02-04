@@ -1,49 +1,11 @@
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-
-  nav {
-    background-color: #333;
-    padding: 10px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  nav img {
-    max-height: 40px; /* Adjust the height as needed */
-    margin-right: 10px;
-  }
-
-  nav a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 16px;
-    display: inline-block;
-    padding: 10px 15px; /* Adjust the padding as needed */
-    background-color: navy;
-    transition: background-color 0.3s, color 0.3s;
-  }
-
-  nav a:hover {
-    background-color: darkred;
-    color: white;
-  }
-</style>
-
-<nav>
-  <img src="../../sheet.png" alt="Logo">
-  <a routerLink="">Accueil</a>
-  <a routerLink="/listing">Page de listing</a>
-</nav>
-
-
-
-
-<hr>
+<mat-toolbar class="main-toolbar">
+  <img style="width: 30px;"src="assets/sheet.png" alt="Logo">
+  Fabrique de papier
+  <button class="main-button">
+    <div routerLink="">Accueil</div></button>
+  <button class="main-button">
+    <div routerLink="/listing">Page de listing</div>
+  </button>
+</mat-toolbar>
 <!-- affiche la section de manière dynamique -->
 <router-outlet></router-outlet>

@@ -4,71 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Page de détail du produit</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
-    }
-
-    h2 {
-      color: #3498db;
-    }
-
-    #main-div {
-      margin: 20px;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-    }
-
-    p {
-      margin: 5px 0;
-    }
-
-    button {
-      background-color: #3498db;
-      color: #fff;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    button:hover {
-      background-color: #2980b9;
-    }
-
-    form {
-      margin-top: 20px;
-    }
-
-    label {
-      display: block;
-      margin-top: 10px;
-    }
-
-    input {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-      box-sizing: border-box;
-    }
-
-    div[ngIf="sectionVisible"] {
-      margin-top: 20px;
-    }
-  </style>
 </head>
 <body>
 
   <div id="main-div">
-    <h2>Page de détail du produit {{ngOnInit()}}</h2>
+    <h2>Page de détail du produit</h2>
 
     <!-- affiche le produit recherché correspondant à l'url -->
     <div *ngIf="findSpecificProduit()">
@@ -78,7 +18,7 @@
       <p><strong>Grammage:</strong> {{ findSpecificProduit()?.Grammage }}</p>
       <p><strong>Couleur:</strong> {{ findSpecificProduit()?.Couleur }}</p>
       <!-- affiche la section formulaire ci-dessous au click -->
-      <button (click)="displayForm()">Créer</button>
+      <button (click)="displayForm()">Modifier</button>
     </div>
 
     <!-- formulaire de modification -->

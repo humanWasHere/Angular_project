@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Produit } from '../model-produit/produit.model';
 
 @Injectable({
@@ -6,10 +7,10 @@ import { Produit } from '../model-produit/produit.model';
 })
 export class ServiceProduitService {
   // liste des produits
-  public _Produit: Produit[] = [];
+  private _Produit: Produit[] = [];
 
   // ajoute un produit
-  public ajoutProduit(p: Produit){
+  public ajoutProduit(p: Produit) {
     this._Produit.push(p);
   }
 
@@ -28,7 +29,7 @@ export class ServiceProduitService {
   }
 
   // retourne l'instance de produit
-  public getProduits(){
-    return this._Produit;
+  public getProduits(): Observable<Produit[]> {
+    return of([...this._Produit]);
   }
 }

@@ -7,6 +7,7 @@ import { ListingComponent } from './listing/listing.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailProduitComponent } from './detail-produit/detail-produit.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DetailProduitComponent } from './detail-produit/detail-produit.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import { ServiceProduitService } from './../service-produit/service-produit.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Produit } from '../model-produit/produit.model';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
@@ -9,11 +9,18 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
   templateUrl: './listing.component.html',
   styleUrls: ['./listing.component.scss']
 })
-export class ListingComponent {
+export class ListingComponent implements OnInit {
 
   // set les services de la classe Produit()
   public constructor(private router: Router, private _produitService: ServiceProduitService){ }
   public produit = new Produit();
+  public produits: Produit[] = [];
+
+  ngOnInit() {
+    this._produitService.getProduits().subscribe((produits) => {
+      this.produits = produits;
+    })
+  }
 
   // défini les conditions de formulaire
   public formulaireProduit = new FormGroup({
@@ -26,7 +33,7 @@ export class ListingComponent {
   // set un produit specific après completion du form
   public onSubmit() {
     this.produit = new Produit();
-    this.produit.Id = this._produitService.getProduits().length + 1;
+    this.produit.Id = this.produits.length + 1;
     this.produit.Nom = this.formulaireProduit.value.nom!;
     this.produit.Texture = this.formulaireProduit.value.texture!;
     this.produit.Grammage = parseInt(this.formulaireProduit.value.grammage!);
@@ -36,7 +43,7 @@ export class ListingComponent {
 
   // retourne la liste des produits par injection de dépendance de produitServices
   public getListeProduits() {
-    return this._produitService.getProduits();
+    return this.produits;
   }
 
   // fonction de redirection de type routing prenant le nom de la page en entrée
