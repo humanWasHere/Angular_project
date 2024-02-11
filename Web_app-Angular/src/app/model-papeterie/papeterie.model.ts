@@ -1,4 +1,4 @@
-export class Produit {
+export class Papeterie {
   public Id = 1;
   public Nom : string | null = "Soie";
   public Texture : string | null = "Doux";

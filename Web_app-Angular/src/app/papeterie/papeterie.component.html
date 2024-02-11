@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page de listing de papeterie</title>
+</head>
+<body>
+
+<div>
+  <h2>Page de listing de papeterie</h2>
+  <form [formGroup]="papeterieForm" (ngSubmit)="addPapeterie()">
+    <div>
+      <label for="nom">Nom du produit</label>
+      <input id="nom" formControlName="name" required>
+    </div>
+    <div>
+      <label for="texture">Texture du produit</label>
+      <input id="texture" formControlName="texture">
+    </div>
+    <div>
+      <label for="grammage">Grammage du produit</label>
+      <input id="grammage" formControlName="grammage" type="text">
+    </div>
+    <div>
+      <label for="prix">Prix du produit</label>
+      <input id="prix" formControlName="prix" type="number" required>
+    </div>
+    <div>
+      <label for="couleur">Couleur du produit</label>
+      <input id="couleur" formControlName="couleur">
+    </div>
+    <button type="submit" [disabled]="!papeterieForm.valid">Sauvegarder</button>
+  </form>
+
+  <ul>
+    <li *ngFor="let papeterie of papeteries">
+      <button (click)="goToPage('../detail-produit/' + papeterie.Id)">
+        <p style="color:#333;"><strong>ID:</strong> {{ papeterie.Id }}</p>
+        <p style="color:#333;"><strong>Nom:</strong> {{ papeterie.Nom }}</p>
+        <p style="color:#333;"><strong>Textures:</strong> {{ papeterie.Texture }}</p>
+        <p style="color:#333;"><strong>Grammage:</strong> {{ papeterie.Grammage }}</p>
+        <p style="color:#333;"><strong>Prix:</strong> {{ papeterie.Prix }}</p>
+        <p style="color:#333;"><strong>Couleur:</strong> {{ papeterie.Couleur }}</p>
+      </button>
+      <button (click)="updatePapeterie(papeterie.Id)">Modifier</button>
+      <button (click)="deletePapeterie(papeterie.Id)">Supprimer</button>
+    </li>
+  </ul>
+
+  <!-- affiche un message si il n'y a aucun produit -->
+  <p *ngIf="papeteries.length === 0">
+    Il n'y a aucun produit à afficher.
+    <br>
+    Créez un produit pour le voir affiché !
+  </p>
+</div>

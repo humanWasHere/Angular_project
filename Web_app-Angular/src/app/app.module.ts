@@ -8,13 +8,16 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailProduitComponent } from './detail-produit/detail-produit.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { PapeterieComponent } from './papeterie/papeterie.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ListingComponent,
-    DetailProduitComponent
+    DetailProduitComponent,
+    PapeterieComponent
   ],
   imports: [
     BrowserModule,
@@ -22,6 +25,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     FormsModule,
     ReactiveFormsModule,
     MatToolbarModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
