@@ -30,7 +30,7 @@
     </form>
 
     <ul>
-      <li *ngFor="let produit of getListeProduits()">
+      <li *ngFor="let produit of getListeProduits() | async">
         <button (click)="goToPage('../detail-produit/' + produit.Id)">
           <p style="color:#333;"><strong>ID:</strong> {{ produit.Id }}</p>
           <p style="color:#333;"><strong>Nom:</strong> {{ produit.Nom }}</p>
@@ -40,7 +40,7 @@
         </button>
       </li>
       <!-- affiche un message si il n'y a aucun produit -->
-      <p *ngIf="getListeProduits().length == 0">
+      <p *ngIf="(getListeProduits() | async)?.length === 0">
         Il n'y a aucun produit à afficher.
         <br>
         Créez un produit pour le voir affiché !

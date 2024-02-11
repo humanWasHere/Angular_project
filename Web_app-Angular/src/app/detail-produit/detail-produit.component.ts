@@ -50,7 +50,7 @@ export class DetailProduitComponent implements OnInit{
       this.produit.Texture = this.formulaireProduit.value.texture!;
       this.produit.Grammage = parseInt(this.formulaireProduit.value.grammage!);
       this.produit.Couleur = this.formulaireProduit.value.couleur!;
-      this._produitService.formerUpdateProduit(this.produit);
+      this._produitService.updateProduit(this.produit.Id, this.produit);
       this.modificationValidee = true;
     } else {
       console.log("Le produit spécifié n'existe pas.");

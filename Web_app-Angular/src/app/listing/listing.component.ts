@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Produit } from '../model-produit/produit.model';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-listing',
@@ -38,12 +39,15 @@ export class ListingComponent implements OnInit {
     this.produit.Texture = this.formulaireProduit.value.texture!;
     this.produit.Grammage = parseInt(this.formulaireProduit.value.grammage!);
     this.produit.Couleur = this.formulaireProduit.value.couleur!;
-    this._produitService.formerCreateProduit(this.produit);
+    this._produitService.createProduit(this.produit);
   }
 
   // retourne la liste des produits par injection de dépendance de produitServices
-  public getListeProduits() {
-    return this.produits;
+  // public getListeProduits() {
+  //   return this.produits;
+  // }
+  public getListeProduits(): Observable<Produit[]> {
+    return of(this.produits); // Retourne un Observable contenant la liste des produits
   }
 
   // fonction de redirection de type routing prenant le nom de la page en entrée

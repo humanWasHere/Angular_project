@@ -7,7 +7,7 @@ import { Produit } from '../model-produit/produit.model';
   providedIn: 'root'
 })
 export class ServiceProduitService {
-  private apiUrl = 'https://localhost:7088/swagger/index.html';
+  private apiUrl = 'https://localhost:7088/api/Papeterie';
 
   constructor(private http: HttpClient) { }
   // liste des produits
