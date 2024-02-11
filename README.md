@@ -5,7 +5,9 @@
 1. [Explications](#Explications)
 2. [Travail à faire](#Travail-à-faire)
 3. [Structure du projet](#Structure-du-projet)  
-4. [Développeurs](#Développeurs)  
+4. [Installation](#Installation)
+5. [Our developping environnement](#Our-developping-environnement)
+6. [Développeurs](#Développeurs)  
 
 ### Explications
 Explication 👍
@@ -41,6 +43,19 @@ même manière que les informations d’un produit.
 ### Structure du projet
 ```
 tree
+```
+
+### Installation
+be carefull to run the following commands before running the application : 
+```npm install -g @angular/cli```
+```npm install```
+```npm i @angular/material```
+
+#### Our developping environnement
+```
+Angular CLI: 16.2.11
+Node: 18.18.2
+Package Manager: npm 9.6.4
 ```
 
 ### Développeurs

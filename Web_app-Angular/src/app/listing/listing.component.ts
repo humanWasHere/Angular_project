@@ -38,7 +38,7 @@ export class ListingComponent implements OnInit {
     this.produit.Texture = this.formulaireProduit.value.texture!;
     this.produit.Grammage = parseInt(this.formulaireProduit.value.grammage!);
     this.produit.Couleur = this.formulaireProduit.value.couleur!;
-    this._produitService.ajoutProduit(this.produit);
+    this._produitService.formerCreateProduit(this.produit);
   }
 
   // retourne la liste des produits par injection de dépendance de produitServices

@@ -1,21 +1,50 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Produit } from '../model-produit/produit.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceProduitService {
+  private apiUrl = 'https://localhost:7088/swagger/index.html';
+
+  constructor(private http: HttpClient) { }
   // liste des produits
   private _Produit: Produit[] = [];
 
+  // section CRUD api
+  getProduits(): Observable<Produit[]> {
+    return this.http.get<Produit[]>(this.apiUrl);
+  }
+
+  getProduitById(id: number): Observable<Produit> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Produit>(url);
+  }
+
+  createProduit(produit: Produit): Observable<Produit> {
+    return this.http.post<Produit>(this.apiUrl, produit);
+  }
+
+  updateProduit(id: number, produit: Produit): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put(url, produit);
+  }
+
+  deleteProduit(id: number): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete(url);
+  }
+
+  // section full angular
   // ajoute un produit
-  public ajoutProduit(p: Produit) {
+  public formerCreateProduit(p: Produit) {
     this._Produit.push(p);
   }
 
   // modifie les données d'instance de produit
-  public updateProduit(p: Produit) {
+  public formerUpdateProduit(p: Produit) {
     // Recherche de l'index du produit à mettre à jour
     const index = this._Produit.findIndex(prod => prod.Id === p.Id);
 
@@ -29,7 +58,7 @@ export class ServiceProduitService {
   }
 
   // retourne l'instance de produit
-  public getProduits(): Observable<Produit[]> {
+  public formerGetProduits(): Observable<Produit[]> {
     return of([...this._Produit]);
   }
 }
