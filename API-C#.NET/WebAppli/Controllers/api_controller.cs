@@ -53,6 +53,8 @@ namespace Api_Papeterie.Controllers
         public ActionResult<model_papetrie> Post([FromBody] model_papetrie nouveauProduit)
         {
             // Ici, générez un ID unique pour le nouveau produit
+            // Commentaire Thibaut : ok, c'est ce que je vous avez dit de faire
+            // Ca pose malgré tout un problème de gestion d'état, faites moi penser à parler des services stateless, c'est important
             nouveauProduit.Id = Produits.Count + 1;
             Produits.Add(nouveauProduit);
             return CreatedAtRoute("GetProduitById", new { id = nouveauProduit.Id }, nouveauProduit);

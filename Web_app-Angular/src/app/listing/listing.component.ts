@@ -18,6 +18,7 @@ export class ListingComponent implements OnInit {
   public produits: Produit[] = [];
 
   ngOnInit() {
+    // Commentaire Thibaut : non, à revoir => on en parle au prochain cours
     this._produitService.getProduits().subscribe((produits) => {
       this.produits = produits;
     })
@@ -39,6 +40,7 @@ export class ListingComponent implements OnInit {
     this.produit.Texture = this.formulaireProduit.value.texture!;
     this.produit.Grammage = parseInt(this.formulaireProduit.value.grammage!);
     this.produit.Couleur = this.formulaireProduit.value.couleur!;
+    // Commentaire Thibaut :  et le subscribe ?
     this._produitService.createProduit(this.produit);
   }
 

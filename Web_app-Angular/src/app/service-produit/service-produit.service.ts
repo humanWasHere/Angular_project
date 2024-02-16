@@ -14,6 +14,8 @@ export class ServiceProduitService {
   private _Produit: Produit[] = [];
 
   // section CRUD api
+  /// Commentaire thibaut ; non, ca ne marche pas
+  // vous auriez du déclarer une variable privée _getProduits et l'affecter à this.http.get...
   getProduits(): Observable<Produit[]> {
     return this.http.get<Produit[]>(this.apiUrl);
   }

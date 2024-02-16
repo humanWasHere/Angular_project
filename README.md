@@ -1,4 +1,20 @@
 # TP AngularJS (EPSI - B3)
+## Correction
+
+Premier point, ce n'est pas de l'angular js qui est une technologie déjà dépréciée depuis quelques années
+
+Bref, 
+Mes remarques : 
+Vous vous êtes un peu perdu dans l'asynchrone. Essayer de suivre un peu plus en cours et de poser des questions
+C'est dommage, vous avez galéré sur des trucs un peu bidon.
+
+L'organisation des dossiers est à revoir. Je vous ai proposé des modèles d'organisation (2 dont celui d'angular) et vous avez fait ça à l'arrache.
+
+POur la partie API, ca correspond au besoin
+
+Notes : 
+Angular : 15
+Dotnet : 20
 ## TP AngularJS de listing de produit de papetrie
 
 ### Sommaire
